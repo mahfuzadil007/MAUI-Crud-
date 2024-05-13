@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiEv.EmployeesPage"
+             Title="EmployeesPage">
+    <VerticalStackLayout>
+        <HorizontalStackLayout>
+            <Label Text="Employees"></Label>
+            <Button x:Name="btnAdd" Text="Add Employee" Clicked="btnAdd_Clicked"/>
+        </HorizontalStackLayout>
+        <ListView ItemsSource="{Binding .}" VerticalOptions="Start" IsPullToRefreshEnabled="True" Refreshing="Employee_Refreshing">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding EmployeeName}" Detail="{Binding JoinDate}">
+                        <TextCell.ContextActions>
+                            <MenuItem Text="Delete" IsDestructive="True" Clicked="EmployeeMenuItem_Clicked"/>
+                        </TextCell.ContextActions>
+                    </TextCell>
+                </DataTemplate>
+            </ListView.ItemTemplate> 
+        </ListView>
+    </VerticalStackLayout>
+</ContentPage>
